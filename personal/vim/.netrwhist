@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/zmwieand/AndroidStudioProjects/SimpleDynamo/app/src/main/java/edu/buffalo/cse/cse486586'
+let g:netrw_dirhist_2='/Users/zmwieand/AndroidStudioProjects/SimpleDynamo/app/src/main/java/edu/buffalo/cse/cse486586/simpledynamo'
+let g:netrw_dirhist_3='/Users/zmwieand/School/CSE489/cse489589_assignment3/zmwieand/include'
+let g:netrw_dirhist_4='/Users/zmwieand/School/CSE489/cse489589_assignment3/grader'
+let g:netrw_dirhist_5='/Users/zmwieand/dev/academic/CSE396/hw9'
+let g:netrw_dirhist_6='/Users/zmwieand/backup'
+let g:netrw_dirhist_7='/Users/zmwieand/interviews'
+let g:netrw_dirhist_8='/Users/zmwieand/dev/GaaS/docker/src/static'
+let g:netrw_dirhist_9='/Users/zmwieand/dev/GaaS/docker/src'
