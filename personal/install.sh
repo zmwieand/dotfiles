@@ -11,7 +11,7 @@ echo "Installing tmux configuration..."
 ln -s `pwd`/tmux.conf ~/.tmux.conf
 
 echo "Installing git configuration..."
-ln -s `pwd`/gitconfig ~/.gitconfig
+cp `pwd`/gitconfig ~/.gitconfig
 ln -s `pwd`/gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 
