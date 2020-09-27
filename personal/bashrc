@@ -19,10 +19,10 @@ gitpurge() {
   git branch --format=\"%\(refname:short\)\" --merged | grep -Ev \"^master$\" | xargs git branch -D
 }
 
-# stock ubuntu bash ls colors
+# Stock ubuntu bash ls colors
 export CLICOLOR=1
-export LSCOLORS=GxBxCxDxexegedabagaced
-export PS1="\[\033[01;32m\]\u {\W} > \[\033[00m\]"
+export LSCOLORS=ExFxBxDxCxegedabagacad
+export PS1='\[\033[01;36m\]λ \[\033[31m\]$(parse_git_branch)\[\033[01;36m\]{\W} > \[\033[00m\]'
 
 # Aliases
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
