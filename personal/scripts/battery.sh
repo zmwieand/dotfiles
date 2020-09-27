@@ -1,11 +1,14 @@
-current_charge=$(pmset -g batt | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
-color="#[fg=green,bold]"
-default="#[fg=green,bold]"
+#!/bin/bash
 
-if [[ $current_charge -lt 15 ]]; then
-    color="#[fg=red]"
-elif [[ $current_charge -lt 40 ]]; then
-    color="#[fg=yellow,bold]"
+COLOR="#[fg=white,bold,bg=green]"
+DEFAULT="#[fg=green,bold,bg=colour237]"
+
+CURRENT_BATT=$(pmset -g batt | grep -Eo "[0-9]+%" | sed "s/%//g")
+
+if [[ ${CURRENT_BATT} -lt 20 ]]; then
+  COLOR="#[fg=white,bold,bg=red]"
+elif [[ ${CURRENT_BATT} -lt 50 ]];then
+  COLOR="#[fg=white,bold,bg=yellow]"
 fi
 
-echo "$color[$current_charge%]$default"
+echo "${COLOR} ϟ ${CURRENT_BATT}% ${DEFAULT}"
