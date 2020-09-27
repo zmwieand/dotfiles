@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing bash configuration..."
-ln -s `pwd`/bash_profile ~/.bash_profile
+ln -s `pwd`/bashrc ~/.bashrc
 
 echo "Installing ssh configuration..."
 ln -s `pwd`/ssh/config ~/.ssh/config
@@ -9,7 +9,10 @@ ln -s `pwd`/ssh/config ~/.ssh/config
 echo "Installing vim configuration..."
 DIR=$(pwd)
 cd ~/
-ln -s ${DIR}/vim .vim
+if [[ ! -d ~/.vim ]]; then
+  echo "~/.vim dir DNE"
+  ln -s ${DIR}/vim .vim
+fi 
 ln -s ${DIR}/vimrc .vimrc
 cd ${DIR}
 

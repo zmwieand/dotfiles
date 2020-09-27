@@ -16,7 +16,7 @@ gitpurge() {
   git checkout master
   git pull origin master
   git fetch -p
-  git branch --format=\"%(refname:short)\" --merged | grep -Ev \"^master$\" | xargs git branch -D"
+  git branch --format=\"%\(refname:short\)\" --merged | grep -Ev \"^master$\" | xargs git branch -D
 }
 
 # stock ubuntu bash ls colors
@@ -39,21 +39,10 @@ alias k="kubectl"
 alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
 alias proxy="/usr/local/bin/kube_proxy.sh"
 
-# here is my super cool reddit console app
-# TODO: move this out
-alias reddit="python ~/dev/reddit/some.py"
-
 # tmux kill commands
 alias killw="tmux kill-window"
 alias killp="tmux kill-pane"
 alias kills="tmux kill-session"
 
-# TODO: move this out
-# Android Studios Path
-export ANDROID_HOME=/Users/zmwieand/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
 # So tar does not create hidden files
 export COPYFILE_DISABLE=true
-
-
