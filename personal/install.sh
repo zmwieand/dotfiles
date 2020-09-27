@@ -4,11 +4,14 @@ echo "Installing bash configuration..."
 ln -s `pwd`/bash_profile ~/.bash_profile
 
 echo "Installing ssh configuration..."
-ln -s `pwd`/ssh/config ~/.ssh/config.
+ln -s `pwd`/ssh/config ~/.ssh/config
 
 echo "Installing vim configuration..."
-ln -s `pwd`/vim ~/.vim
-ln -s `pwd`/vimrc ~/.vimrc
+DIR=$(pwd)
+cd ~/
+ln -s ${DIR}/vim .vim
+ln -s ${DIR}/vimrc .vimrc
+cd ${DIR}
 
 echo "Installing tmux configuration..."
 ln -s `pwd`/tmux.conf ~/.tmux.conf
@@ -18,6 +21,7 @@ ln -s `pwd`/gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 
 # Add my scripts to the PATH
+echo "Installing custom scripts..."
 SCRIPTS=$(ls -1 ./scripts)
 for script in ${SCRIPTS}
 do
