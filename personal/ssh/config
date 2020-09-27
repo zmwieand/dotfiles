@@ -1,0 +1,4 @@
+Host pihole
+    HostName pihole
+    User pi
+    IdentityFile ~/.ssh/id_rsa

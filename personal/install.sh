@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo "Install bash configuration..."
+echo "Installing bash configuration..."
 ln -s `pwd`/bash_profile ~/.bash_profile
+
+echo "Installing ssh configuration..."
+ln -s `pwd`/ssh/config ~/.ssh/config.
 
 echo "Installing vim configuration..."
 ln -s `pwd`/vim ~/.vim
@@ -11,7 +14,6 @@ echo "Installing tmux configuration..."
 ln -s `pwd`/tmux.conf ~/.tmux.conf
 
 echo "Installing git configuration..."
-cp `pwd`/gitconfig ~/.gitconfig
 ln -s `pwd`/gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 
