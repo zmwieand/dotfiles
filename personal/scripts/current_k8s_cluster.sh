@@ -1,6 +1,9 @@
 #!/bin/bash
 
 CURRENT_CLUSTER=$(kubectl config current-context | cut -d/ -f2)
+if [[ -z ${CURRENT_CLUSTER} ]]; then
+  CURRENT_CLUSTER="-"
+fi
 
 COLOR="#[fg=white,bold,bg=colour69] ⎈ "
 DEFAULT="#[fg=green,bold,noblink,bg=colour237]"
