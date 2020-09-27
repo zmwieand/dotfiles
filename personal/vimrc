@@ -5,8 +5,7 @@ set colorcolumn=80
 set ruler
 set showmatch
 set visualbell
-
-:set rulerformat=[%l\:%c]
+set rulerformat=%100(%F\ [%l\:%c]%)
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -16,18 +15,17 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-" 2 tabs for yaml/sh files
+" 2 tabs for yaml/sh/tsx files
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 autocmd FileType sh setlocal ts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sw=2 expandtab
 
 syntax enable
 set background=dark
-" set t_Co=256
 let g:solarized_termcolors=256
 colorscheme solarized
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
-
 highlight ColorColumn ctermbg=238
 
 " For plugins
