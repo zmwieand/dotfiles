@@ -1,5 +1,5 @@
-# config
-My Linux/MacOS configuration files.
+# dotfiles
+My Linux/MacOS configuration files
 
 ### Directory Structure
 ```
