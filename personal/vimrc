@@ -3,9 +3,9 @@ set nocompatible
 set hlsearch
 set colorcolumn=80 
 set ruler
+set rulerformat=[%l\:%c]
 set showmatch
 set visualbell
-set rulerformat=%100(%F\ [%l\:%c]%)
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
