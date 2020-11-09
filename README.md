@@ -10,12 +10,12 @@ My Linux/MacOS configuration files
 ### Getting Started
 1. Clone this repository
 ```bash
-git clone git@github.com/zmwieand/config.git
+git clone git@github.com/zmwieand/dotfiles.git
 ```
 
 2. Move into the direcotry contianing the files
 ```bash
-cd <directory>/
+cd dotfiles/
 ```
 
 3. Run the installation script
