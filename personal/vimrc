@@ -5,7 +5,6 @@ set colorcolumn=80
 set ruler
 set rulerformat=[%l\:%c]
 set showmatch
-set visualbell
 
 filetype plugin indent on
 " show existing tab with 4 spaces width

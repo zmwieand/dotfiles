@@ -19,6 +19,13 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
+# Home/End/Delete keys
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey  "^[[3~"  delete-char
+
 # Get the current git branch for PS1
 function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⌥ \1 /'
@@ -37,7 +44,11 @@ function gitpurge() {
   git checkout master
   git pull origin master
   git fetch -p
-  git branch --format=\"%\(refname:short\)\" --merged | grep -Ev \"^master$\" | xargs git branch -D
+
+  BRANCHES=$(git branch --format=%\(refname:short\) --merged | grep -Ev ^master$)
+  if [[ ! -z ${BRANCHES} ]]; then
+    echo ${BRANCHES} | xargs git branch -D
+  fi
 }
 
 # Stock ubuntu bash ls colors
