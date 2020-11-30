@@ -1,0 +1,48 @@
+# Get the current git branch for PS1
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⌥  \1 /'
+  # insertions=$(git diff --stat | grep -Eo "\d+ insertions" | grep -Eo "\d+")
+  # deletions=$(git diff --stat | grep -Eo "\d+ deletions" | grep -Eo "\d+")
+  # echo "${branch} +${insertions}/-${deletions} "
+}
+
+# Change to the root of the git repo directory
+gitroot() {
+  cd $(git rev-parse --show-toplevel)
+}
+
+# Remove all local git branches merged on the remote
+gitpurge() {
+  git checkout master
+  git pull origin master
+  git fetch -p
+  git branch --format=\"%\(refname:short\)\" --merged | grep -Ev \"^master$\" | xargs git branch -D
+}
+
+# Stock ubuntu bash ls colors
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+export PS1='\[\033[01;36m\]λ \[\033[31m\]$(parse_git_branch)\[\033[01;36m\]{\W} > \[\033[00m\]'
+
+# Aliases
+alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias grep='grep --color'
+alias ll="ls -al"
+alias ls='ls -GFh'
+alias ll='ls -laGFh'
+alias psme="ps aux | grep $(whoami)"
+alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+alias weather="curl wttr.in/14086"
+
+# Kubernetes Aliases
+alias k="kubectl"
+alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
+alias proxy="/usr/local/bin/kube_proxy.sh"
+
+# tmux kill commands
+alias killw="tmux kill-window"
+alias killp="tmux kill-pane"
+alias kills="tmux kill-session"
+
+# So tar does not create hidden files
+export COPYFILE_DISABLE=true

@@ -1,0 +1,29 @@
+# Taps
+tap "homebrew/cask"
+
+# Formulae
+brew "automake"
+brew "ccat"
+brew "git"
+brew "gnu-sed"
+brew "go"
+brew "htop"
+brew "jq"
+brew "node"
+brew "python"
+brew "telnet"
+brew "tmux"
+brew "tree"
+brew "watch"
+brew "wget"
+
+# Casks
+cask "gnucash", args: { force: true }
+cask "google-backup-and-sync", args: { force: true }
+cask "google-chrome", args: { force: true }
+cask "iterm2", args: { force: true }
+cask "keepassxc", args: { force: true }
+cask "slack", args: { force: true }
+cask "spectacle", args: { force: true }
+cask "spotify", args: { force: true }
+cask "zoom", args: { force: true }
