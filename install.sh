@@ -20,9 +20,8 @@ echo "Installing tmux configuration..."
 ln -s -f `pwd`/tmux.conf ~/.tmux.conf
 
 echo "Installing git configuration..."
-ln -s -f `pwd`/gitignore_global ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
-git config --global alias.lg "log -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an (via %cn)' --abbrev-commit --date=relative"
+ln -s -f `pwd`/git/gitconfig ~/.gitconfig
+ln -s -f `pwd`/git/gitignore_global ~/.gitignore_global
 
 # Add my scripts to the PATH
 echo "Installing custom scripts..."

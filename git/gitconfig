@@ -1,0 +1,21 @@
+# This is Git's per-user configuration file.
+[user]
+	name = zmwieand
+	email = zmwieand@gmail.com
+[core]
+	excludesfile = /Users/zmwieand/.gitignore_global
+[pull]
+    rebase = false
+[alias]
+    co = checkout
+    cm = commit -m
+    create = checkout -b
+    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    hash = log -1 --pretty=format:"%H"
+    last = log -1
+	lg = log -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an (via %cn)' --abbrev-commit --date=relative
+    purge = "!f() { DEFAULT=$(git default); git co ${1-$DEFAULT}; git pull origin ${1-$DEFAULT}; git fetch -p; git branch --merged ${1-$DEFAULT} | grep -v \" ${1-$DEFAULT}$\" | xargs git branch -D; }; f"
+    subs = submodule update --init --recursive
+    track = "!f() { git checkout --track origin/$1; }; f"
+    undo = reset --soft HEAD~1
+    unstage = restore --staged
