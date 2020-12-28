@@ -11,14 +11,6 @@ gitroot() {
   cd $(git rev-parse --show-toplevel)
 }
 
-# Remove all local git branches merged on the remote
-gitpurge() {
-  git checkout master
-  git pull origin master
-  git fetch -p
-  git branch --format=\"%\(refname:short\)\" --merged | grep -Ev \"^master$\" | xargs git branch -D
-}
-
 # Stock ubuntu bash ls colors
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
