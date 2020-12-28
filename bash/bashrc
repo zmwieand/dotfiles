@@ -17,6 +17,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export PS1='\[\033[01;36m\]λ \[\033[31m\]$(parse_git_branch)\[\033[01;36m\]{\W} > \[\033[00m\]'
 
 # Aliases
+alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
 alias ll="ls -al"
