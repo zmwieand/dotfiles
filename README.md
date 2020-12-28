@@ -43,14 +43,10 @@ ln -s -f `pwd`/bash/bashrc ~/.bashrc
 From there you can set a `.bash_profile` for the specific machine.
 
 ##### git
+Includes a gitconfig with my information, various aliases and a global gitignore
 ```
-git config --global user.name <NAME>
-git config --global user.email <EMAIL>
-
-ln -s -f `pwd`/gitignore_global ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
-
-git config --global alias.lg "log -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an (via %cn)' --abbrev-commit --date=relative"
+ln -s -f `pwd`/git/gitconfig ~/.gitconfig
+ln -s -f `pwd`/git/gitignore_global ~/.gitignore_global
 ```
 
 ##### vim
