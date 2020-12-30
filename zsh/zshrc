@@ -45,6 +45,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export PS1='%F{81}λ %F{124}$(parse_git_branch)%F{81}{%1~} > %f'
 
 # Aliases
+alias zsource="source ~/.zshrc && source ~/.zprofile"
 alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
