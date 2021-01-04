@@ -52,6 +52,7 @@ alias grep='grep --color'
 alias ll="ls -al"
 alias ls='ls -GFh'
 alias ll='ls -laGFh'
+alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
 alias psme="ps aux | grep $(whoami)"
 alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
 alias weather="curl wttr.in/14086"
