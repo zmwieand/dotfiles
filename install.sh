@@ -2,7 +2,6 @@
 
 echo "Installing brew configuration..."
 ln -s -f `pwd`/brew/Brewfile ~/Brewfile
-ln -s -f `pwd`/brew/Brewfile.lock.json ~/Brewfile.lock.json
 
 echo "Installing zsh configuration..."
 ln -s -f `pwd`/zsh/zshrc ~/.zshrc
@@ -22,6 +21,10 @@ ln -s -f `pwd`/tmux.conf ~/.tmux.conf
 echo "Installing git configuration..."
 ln -s -f `pwd`/git/gitconfig ~/.gitconfig
 ln -s -f `pwd`/git/gitignore_global ~/.gitignore_global
+
+echo "Installing crontab for user..."
+ln -s -f `pwd`/crontab ~/.crontab
+crontab ~/.crontab
 
 # Add my scripts to the PATH
 echo "Installing custom scripts..."
