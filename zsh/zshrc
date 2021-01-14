@@ -39,6 +39,11 @@ function gitroot() {
   cd $(git rev-parse --show-toplevel)
 }
 
+# Search the current directory recursively
+function csearch() {
+    grep -ERn $@ .
+}
+
 # Stock ubuntu bash ls colors
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
