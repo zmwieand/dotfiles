@@ -15,7 +15,7 @@ def encrypt_file(filename, filepath, recipients):
     """
     Create an encrypted gpg file for a filepath.
     """
-    gpg = gnupg.GPG()
+    gpg = gnupg.GPG(gpgbinary='/usr/local/bin/gpg')
     filename = os.path.expanduser(filename)
     with open(filepath, 'rb') as tar:
         gpg.encrypt_file(
