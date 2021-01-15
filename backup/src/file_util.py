@@ -39,7 +39,8 @@ def cleanup_file(filename):
     """
     Remove a file by filename.
     """
-    os.remove(filename)
+    path = os.path.expanduser(filename)
+    os.remove(path)
 
 def get_backups(mount_path, machineName):
     """

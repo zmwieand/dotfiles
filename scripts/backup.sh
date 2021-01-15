@@ -24,7 +24,7 @@ fi
 echo "Running Backup..."
 cd ${HOME}/dev/dotfiles/backup
 echo "CWD: `pwd`"
-/usr/local/bin/pipenv run python -m src.main 2>&1 >> /tmp/cron.log &
+/usr/local/bin/pipenv run python -m src.main 2>&1 &
 
 # Make sure the machine does not sleep for the duration of the backup
 BACKUP_PID=$!

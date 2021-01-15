@@ -40,7 +40,7 @@ def main():
     for backup in current_backups:
         if backup not in retain:
             print(f'Removing backup: {backup}')
-            cleanup_file(backup)
+            cleanup_file(f'{nas_mount}/Backups/{machineName}/{backup}')
 
     # Cleanup newly created backup files on the local machine (/tmp)
     cleanup_file(tar_filename)
