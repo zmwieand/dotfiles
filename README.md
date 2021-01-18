@@ -83,6 +83,11 @@ gpg
 paths: []
 ```
 
+I also recommend adding the following to `/etc/sudoers` or run `sudo visudo`
+```
+<user>  ALL = (ALL) NOPASSWD: /usr/bin/pkill
+```
+
 ##### Crontab
 Responsible for nightly backups at 3:05am. May need to adjust energy saving
 preferences for laptops to wake before hand.
