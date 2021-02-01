@@ -1,0 +1,8 @@
+# Aliases
+source ~/.sh/aliases
+alias bsource="source ~/.bashrc && source ~/.bash_profile"
+
+# PATH
+source ~/.sh/path
+
+export PS1='\[\033[01;36m\]λ \[\033[31m\]$(parse_git_branch)\[\033[01;36m\]{\W} > \[\033[00m\]'

@@ -1,0 +1,6 @@
+# Ubuntu ls colors
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# So tar does not create hidden files
+export COPYFILE_DISABLE=true

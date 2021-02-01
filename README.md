@@ -30,15 +30,20 @@ brew bundle install
 ```
 
 ##### zsh/bash
+First add the common aliases and `PATH` variables
+```
+ln -s -f `pwd`/sh ~/.sh
+```
+
 If you are using `zsh`
 ```
-ln -s -f `pwd`/zsh/zshrc ~/.zshrc
+ln -s -f `pwd`/sh/zshrc ~/.zshrc
 ```
 From there you can set a `.zprofile` for the specific machine.
 
 If you are using `bash`
 ```
-ln -s -f `pwd`/bash/bashrc ~/.bashrc
+ln -s -f `pwd`/sh/bashrc ~/.bashrc
 ```
 From there you can set a `.bash_profile` for the specific machine.
 

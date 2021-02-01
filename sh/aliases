@@ -1,28 +1,28 @@
 # Get the current git branch for PS1
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⌥  \1 /'
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⌥ \1 /'
   # insertions=$(git diff --stat | grep -Eo "\d+ insertions" | grep -Eo "\d+")
   # deletions=$(git diff --stat | grep -Eo "\d+ deletions" | grep -Eo "\d+")
   # echo "${branch} +${insertions}/-${deletions} "
 }
 
 # Change to the root of the git repo directory
-gitroot() {
+function gitroot() {
   cd $(git rev-parse --show-toplevel)
 }
 
-# Stock ubuntu bash ls colors
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-export PS1='\[\033[01;36m\]λ \[\033[31m\]$(parse_git_branch)\[\033[01;36m\]{\W} > \[\033[00m\]'
+# Search the current directory recursively
+function csearch() {
+    grep -ERn $@ .
+}
 
 # Aliases
-alias bsource="source ~/.bashrc && source ~/.bash_profile"
+alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
-alias journal="google-chrome ~/Documents/journal"
-alias journal_entry="/usr/local/bin/add_journal_entry.sh"
 alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
+alias journal="brave ~/Documents/journal"
+alias journal_entry="/usr/local/bin/add_journal_entry.sh"
 alias ll="ls -al"
 alias ls='ls -GFh'
 alias ll='ls -laGFh'
@@ -40,6 +40,3 @@ alias proxy="/usr/local/bin/kube_proxy.sh"
 alias killw="tmux kill-window"
 alias killp="tmux kill-pane"
 alias kills="tmux kill-session"
-
-# So tar does not create hidden files
-export COPYFILE_DISABLE=true

@@ -4,7 +4,13 @@ echo "Installing brew configuration..."
 ln -s -f `pwd`/brew/Brewfile ~/Brewfile
 
 echo "Installing zsh configuration..."
-ln -s -f `pwd`/zsh/zshrc ~/.zshrc
+DIR=$(pwd)
+cd ~/
+if [[ ! -d ~/.sh ]]; then
+  ln -s -f ${DIR}/sh ~/.sh
+fi 
+cd ${DIR}
+ln -s -f `pwd`/sh/zshrc ~/.zshrc
 
 echo "Installing vim configuration..."
 DIR=$(pwd)
