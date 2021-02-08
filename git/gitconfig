@@ -3,7 +3,7 @@
     name = zmwieand
     email = zmwieand@gmail.com
 [core]
-    excludesfile = /Users/zmwieand/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [pull]
     rebase = false
 [alias]
