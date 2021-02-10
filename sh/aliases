@@ -21,8 +21,6 @@ alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
 alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
-alias journal="brave ~/dev/journal"
-# alias journal_entry="/usr/local/bin/add_journal_entry.sh <PATH>"
 alias ll="ls -al"
 alias ls='ls -GFh'
 alias ll='ls -laGFh'
@@ -30,6 +28,11 @@ alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
 alias psme="ps aux | grep $(whoami)"
 alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
 alias weather="curl wttr.in/14086"
+
+# Journal Aliases
+alias journal="brave ~/dev/journal"
+# alias journal_entry="/usr/local/bin/add_journal_entry.sh <PATH>"
+alias todo="exec vim ~/dev/journal/TODO.md"
 
 # Kubernetes Aliases
 alias k="kubectl"
