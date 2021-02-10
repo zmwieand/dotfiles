@@ -1,1 +1,2 @@
-1 3 * * * /usr/local/bin/backup.sh 2>&1 > /tmp/cron.log
+1 3 * * * /usr/local/bin/backup.sh 2>&1 > /tmp/backup.log
+*/2 * * * * /usr/local/bin/sync_journal.sh 

@@ -1,6 +1,11 @@
 #!/bin/bash
 
-JOURNAL_PATH="${HOME}/Documents/journal"
+if [[ $# -ne 1 ]]; then
+  echo "Must provide journal path i.e. Personal"
+  exit 1
+fi
+
+JOURNAL_PATH="${HOME}/dev/journal/$1"
 DAY=$(date "+%d")
 MONTH=$(date "+%m")
 YEAR=$(date "+%Y")
@@ -15,8 +20,6 @@ if [[ ! -f ${ENTRY} ]]; then
   echo "---" >> ${ENTRY}
   echo "" >> ${ENTRY}
   echo "### " >> ${ENTRY}
-  echo "" >> ${ENTRY}
-  echo "---" >> ${ENTRY}
 fi
 
 exec vim ${ENTRY}

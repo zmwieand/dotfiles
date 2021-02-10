@@ -39,3 +39,8 @@ for script in ${SCRIPTS}
 do
   ln -s -f `pwd`/scripts/${script} /usr/local/bin/${script}
 done
+
+echo "Installing journal..."
+if [[ ! -d ~/dev/journal ]]; then
+  git clone git@github.com:zmwieand/journal ~/dev/journal
+fi 
