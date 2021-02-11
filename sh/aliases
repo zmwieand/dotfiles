@@ -32,7 +32,7 @@ alias weather="curl wttr.in/14086"
 # Journal Aliases
 alias journal="brave ~/dev/journal"
 # alias journal_entry="/usr/local/bin/add_journal_entry.sh <PATH>"
-alias todo="exec vim ~/dev/journal/TODO.md"
+alias todo="/bin/bash -c \"exec vim ~/dev/journal/TODO.md\""
 
 # Kubernetes Aliases
 alias k="kubectl"
