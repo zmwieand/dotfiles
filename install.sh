@@ -28,6 +28,11 @@ echo "Installing git configuration..."
 ln -s -f `pwd`/git/gitconfig ~/.gitconfig
 ln -s -f `pwd`/git/gitignore_global ~/.gitignore_global
 
+echo "Installing ssh configuration..."
+if [[ ! -f ~/.ssh/config ]]; then
+  cat ./ssh/config > ~/.ssh/config
+fi 
+
 echo "Installing crontab for user..."
 ln -s -f `pwd`/crontab ~/.crontab
 crontab ~/.crontab
