@@ -44,3 +44,9 @@ echo "Installing journal..."
 if [[ ! -d ~/dev/journal ]]; then
   git clone git@github.com:zmwieand/journal ~/dev/journal
 fi 
+
+echo "Installing bookmarks..."
+BOOKMARKS_FILE=~/.bookmarks
+if [[ ! -f ${BOOKMARKS_FILE} ]]; then
+  cat ./bookmarks > ${BOOKMARKS_FILE}
+fi 
