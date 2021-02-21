@@ -1,0 +1,19 @@
+nas:
+  user: Zach
+  machineName: ""
+  mountLocation: ~/NAS
+  server: 192.168.1.1
+
+gpg:
+  recipient: 'zmwieand@gmail.com'
+
+paths:
+  - ~/Documents
+  - ~/Pictures
+  - ~/dev
+  - ~/.backuprc
+  - ~/.bookmarks
+  - ~/.keys
+  - ~/.ssh/config
+  - ~/.zprofile
+  - ~/.zsh_history

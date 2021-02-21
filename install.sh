@@ -45,7 +45,18 @@ if [[ ! -d ~/dev/journal ]]; then
   git clone git@github.com:zmwieand/journal ~/dev/journal
 fi 
 
-echo "Installing bookmarks..."
+echo "Installing backup configuration..."
+NAS_DIR=~/NAS
+if [[ ! -d ${NAS_DIR} ]]; then
+  mkdir -p ${NAS_DIR}
+fi
+
+BACKUP_FILE=~/.backuprc
+if [[ ! -f ${BACKUP_FILE} ]]; then
+  cat ./backup/backuprc.yaml > ${BACKUP_FILE}
+fi 
+
+echo "Installing bookmarks configuration..."
 BOOKMARKS_FILE=~/.bookmarks
 if [[ ! -f ${BOOKMARKS_FILE} ]]; then
   cat ./bookmarks > ${BOOKMARKS_FILE}
