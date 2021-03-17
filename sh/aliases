@@ -74,3 +74,19 @@ alias proxy="/usr/local/bin/kube_proxy.sh"
 alias killw="tmux kill-window"
 alias killp="tmux kill-pane"
 alias kills="tmux kill-session"
+
+# Kubernetes CronJob Funtions
+function suspend_cron() {
+  # Usage: suspend_cron <cronjob name> <namespace>
+  echo kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": true}}'
+}
+
+function enable_cron() {
+  # Usage: enable_cron <cronjob name> <namespace>
+  echo kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": false}}'
+}
+
+function trigger_cron() {
+  # Usage: trigger_cron <cronjob name> <namespace>
+  echo kubectl create job --from=cronjob/$1 -n $2 $1-manual-$(date +"%s")
+}
