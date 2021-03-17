@@ -1,3 +1,28 @@
+# ------------------------------------------------------------------------------
+# General Aliases and Functions
+# ------------------------------------------------------------------------------
+alias aliases="vim ~/.sh/aliases"
+alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
+alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias grep='grep --color'
+alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
+alias ll="ls -al"
+alias ls='ls -GFh'
+alias ll='ls -laGFh'
+alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
+alias psme="ps aux | grep $(whoami)"
+alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+alias weather="curl wttr.in/14086"
+
+# Search the current directory recursively
+function csearch() {
+    grep --color -ERn $@ .
+}
+
+
+# ------------------------------------------------------------------------------
+# Git Aliases
+# ------------------------------------------------------------------------------
 # Get the current git branch for PS1
 function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⌥ \1 /'
@@ -11,12 +36,10 @@ function gitroot() {
   cd $(git rev-parse --show-toplevel)
 }
 
-# Search the current directory recursively
-function csearch() {
-    grep --color -ERn $@ .
-}
 
-# Bookmark function
+# ------------------------------------------------------------------------------
+# Bookmark Function
+# ------------------------------------------------------------------------------
 function b() {
     BOOKMARKS_FILE=~/.bookmarks
 
@@ -46,47 +69,46 @@ function b() {
     cd ${BOOKMARKED_DIR}
 }
 
-# Aliases
-alias aliases="vim ~/.sh/aliases"
-alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
-alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias grep='grep --color'
-alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
-alias ll="ls -al"
-alias ls='ls -GFh'
-alias ll='ls -laGFh'
-alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
-alias psme="ps aux | grep $(whoami)"
-alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
-alias weather="curl wttr.in/14086"
 
+# ------------------------------------------------------------------------------
 # Journal Aliases
+# ------------------------------------------------------------------------------
 alias journal="brave ~/dev/journal"
 alias entry="/usr/local/bin/add_journal_entry.sh Personal"
 alias todo="/bin/bash -c \"exec vim ~/dev/journal/TODO.md\""
 
-# Kubernetes Aliases
-alias k="kubectl"
-alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
-alias proxy="/usr/local/bin/kube_proxy.sh"
 
-# tmux kill commands
+# ------------------------------------------------------------------------------
+# Tmux Aliases
+# ------------------------------------------------------------------------------
 alias killw="tmux kill-window"
 alias killp="tmux kill-pane"
 alias kills="tmux kill-session"
 
-# Kubernetes CronJob Funtions
+
+# ------------------------------------------------------------------------------
+# Kubernetes Aliases and Functions
+# ------------------------------------------------------------------------------
+alias k="kubectl"
+alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
+alias proxy="/usr/local/bin/kube_proxy.sh"
+
+roll_pods() {
+  # Usage: $ roll_pods <pod> <namespace>
+  kubectl -n $2 get pods | awk '{print $1}' | grep ^$1 | xargs -P1 -n1 kubectl -n $2 delete pod
+}
+
 function suspend_cron() {
   # Usage: suspend_cron <cronjob name> <namespace>
-  echo kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": true}}'
+  kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": true}}'
 }
 
 function enable_cron() {
   # Usage: enable_cron <cronjob name> <namespace>
-  echo kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": false}}'
+  kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": false}}'
 }
 
 function trigger_cron() {
   # Usage: trigger_cron <cronjob name> <namespace>
-  echo kubectl create job --from=cronjob/$1 -n $2 $1-manual-$(date +"%s")
+  kubectl create job --from=cronjob/$1 -n $2 $1-manual-$(date +"%s")
 }
