@@ -93,7 +93,7 @@ alias k="kubectl"
 alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
 alias proxy="/usr/local/bin/kube_proxy.sh"
 
-roll_pods() {
+function roll_pods() {
   # Usage: $ roll_pods <pod> <namespace>
   kubectl -n $2 get pods | awk '{print $1}' | grep ^$1 | xargs -P1 -n1 kubectl -n $2 delete pod
 }
