@@ -22,7 +22,6 @@ brew "wget"
 
 # Casks
 cask "brave-browser", args: { force: true }
-cask "gnucash", args: { force: true }
 cask "google-backup-and-sync", args: { force: true }
 cask "google-chrome", args: { force: true }
 cask "iterm2", args: { force: true }

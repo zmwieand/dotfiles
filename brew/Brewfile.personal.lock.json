@@ -1,0 +1,32 @@
+{
+  "entries": {
+    "tap": {
+      "homebrew/cask": {
+        "revision": "fa820d179a9b1187408ec89ea0b15c5171190ad7"
+      }
+    },
+    "cask": {
+      "gnucash": {
+        "version": "4.5",
+        "options": {
+          "args": {
+            "force": true
+          },
+          "full_name": "gnucash"
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "big_sur": {
+        "HOMEBREW_VERSION": "3.0.11",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "e3e51fa975fd2c83352bf7b382b3d50525bd546a",
+        "CLT": "12.3.0.0.1.1607026830",
+        "Xcode": "12.0",
+        "macOS": "11.1"
+      }
+    }
+  }
+}
