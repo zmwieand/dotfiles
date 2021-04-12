@@ -73,9 +73,9 @@ function b() {
 # ------------------------------------------------------------------------------
 # Journal Aliases
 # ------------------------------------------------------------------------------
-alias journal="brave ~/dev/journal"
+alias journal="vim ~/dev/journal"
 alias entry="/usr/local/bin/add_journal_entry.sh Personal"
-alias todo="/bin/bash -c \"exec vim ~/dev/journal/TODO.md\""
+alias todo="vim ~/dev/journal/TODO.md"
 
 
 # ------------------------------------------------------------------------------
