@@ -24,9 +24,9 @@ This script is made for MacOS using `zsh` with homebrew installed.
 You will need to make sure [homebrew](https://brew.sh/) is installed.
 
 ```
-ln -s -f `pwd`/brew/Brewfile ~/Brewfile
-ln -s -f `pwd`/brew/Brewfile.lock.json ~/Brewfile.lock.json
-brew bundle install
+ln -s -f `pwd`/brew/Brewfile ~/.Brewfile
+ln -s -f `pwd`/brew/Brewfile.lock.json ~/.Brewfile.lock.json
+brew bundle install --global
 ```
 
 ##### zsh/bash

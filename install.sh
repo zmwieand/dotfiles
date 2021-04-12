@@ -1,7 +1,9 @@
 #!/bin/bash
 
 echo "Installing brew configuration..."
-ln -s -f `pwd`/brew/Brewfile ~/Brewfile
+ln -s -f `pwd`/brew/Brewfile ~/.Brewfile
+ln -s -f `pwd`/brew/Brewfile.lock.json ~/.Brewfile.lock.json
+exit 
 
 echo "Installing zsh configuration..."
 DIR=$(pwd)
