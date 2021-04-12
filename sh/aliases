@@ -94,8 +94,14 @@ alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
 alias proxy="/usr/local/bin/kube_proxy.sh"
 
 function roll_pods() {
-  # Usage: $ roll_pods <pod> <namespace>
-  kubectl -n $2 get pods | awk '{print $1}' | grep ^$1 | xargs -P1 -n1 kubectl -n $2 delete pod
+  # Usage: $ roll_pods <pod> <namespace> [<parallel pods>]
+  if [[ $# -lt 3 ]]; then
+    PARALLEL=1
+  else
+    PARALLEL=$3
+  fi
+
+  kubectl -n $2 get pods | awk '{print $1}' | grep ^$1 | xargs -P${PARALLEL} -n1 kubectl -n $2 delete pod
 }
 
 function suspend_cron() {
