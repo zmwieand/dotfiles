@@ -1,0 +1,66 @@
+" ------------------------------------------------------------------------------
+" Basics
+" ------------------------------------------------------------------------------
+set number
+set nocompatible
+set hlsearch
+set showmatch
+
+" Status Line
+set laststatus=2
+set ruler
+set rulerformat=[%l\:%c]
+
+
+" ------------------------------------------------------------------------------
+" Indentation
+" ------------------------------------------------------------------------------
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" 2 tabs for yaml/sh/tsx/terraform files
+autocmd FileType yaml setlocal ts=2 sw=2 expandtab
+autocmd FileType sh setlocal ts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sw=2 expandtab
+autocmd FileType tf setlocal ts=2 sw=2 expandtab
+
+
+" ------------------------------------------------------------------------------
+" Syntax highlighting and colorscheme
+" ------------------------------------------------------------------------------
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+
+" 80 Line Limit
+set colorcolumn=80
+highlight ColorColumn ctermbg=238
+
+" Highlight extra whitespace at end of line
+highlight ExtraWhitespace ctermbg=darkred
+match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+
+" ------------------------------------------------------------------------------
+" Plugins
+" ------------------------------------------------------------------------------
+let NERDTreeBookmarksFile=expand("$HOME/.bookmarks")
+execute pathogen#infect()
+
+
+" ------------------------------------------------------------------------------
+" Plugins
+" ------------------------------------------------------------------------------
+" todo keybinding - adds "- [ ]" to newline
+nnoremap tt o- [ ]
+
+" quote keybindings - Surround Visual Mode text in quotes
+vnoremap ' <Esc>`>a'<Esc>`<i'<Esc>
+vnoremap " <Esc>`>a"<Esc>`<i"<Esc>
