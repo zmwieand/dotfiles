@@ -58,7 +58,7 @@ function b() {
     BOOKMARK=$1
     
     # Make sure this is a valid bookmark
-    BOOKMARK_CONFIG=$(cat ${BOOKMARKS_FILE} | grep -E  "^${BOOKMARK}: ")
+    BOOKMARK_CONFIG=$(cat ${BOOKMARKS_FILE} | grep -E  "^${BOOKMARK} ")
     if [[ -z ${BOOKMARK_CONFIG} ]]; then
       echo "Bookmark \"${BOOKMARK}\" not found"
       return

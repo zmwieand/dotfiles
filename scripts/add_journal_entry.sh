@@ -16,10 +16,10 @@ mkdir -p ${YEAR}/${MONTH}
 
 ENTRY="./${YEAR}/${MONTH}/${DAY}.md"
 if [[ ! -f ${ENTRY} ]]; then
-  echo "## ${MONTH}/${DAY}/${YEAR}" >> ${ENTRY}
+  echo "# ${MONTH}/${DAY}/${YEAR}" >> ${ENTRY}
   echo "---" >> ${ENTRY}
   echo "" >> ${ENTRY}
   echo "### " >> ${ENTRY}
 fi
 
-exec vim ${ENTRY}
+exec vim -c "NERDTree journal" ${ENTRY}
