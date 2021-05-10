@@ -12,6 +12,7 @@ alias ll='ls -laGFh'
 alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
 alias psme="ps aux | grep $(whoami)"
 alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+alias tf="terraform"
 alias weather="curl wttr.in/14086"
 
 # Search the current directory recursively
@@ -48,22 +49,22 @@ function b() {
       echo "       b edit       -- edit the bookmark config file ${BOOKMARKS_FILE}"
       return
     fi
-    
+
     # b edit will open ~/.bookmarks
     if [[ $1 == "edit" ]]; then
       /bin/bash -c "vim ${BOOKMARKS_FILE}"
       return
     fi
-    
+
     BOOKMARK=$1
-    
+
     # Make sure this is a valid bookmark
     BOOKMARK_CONFIG=$(cat ${BOOKMARKS_FILE} | grep -E  "^${BOOKMARK} ")
     if [[ -z ${BOOKMARK_CONFIG} ]]; then
       echo "Bookmark \"${BOOKMARK}\" not found"
       return
     fi
-    
+
     # cd into the bookmarked directory
     BOOKMARKED_DIR=$(echo ${BOOKMARK_CONFIG} | awk '{print $2}' | sed "s#\~#$HOME#g")
     cd ${BOOKMARKED_DIR}
