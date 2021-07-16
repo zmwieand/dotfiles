@@ -75,7 +75,7 @@ function b() {
 # Journal Aliases
 # ------------------------------------------------------------------------------
 alias journal="vim ~/dev/journal"
-alias entry="/usr/local/bin/add_journal_entry.sh Personal"
+# alias entry="/usr/local/bin/add_journal_entry.sh Personal"
 alias todo="vim ~/dev/journal/TODO.md"
 
 
@@ -93,6 +93,7 @@ alias kills="tmux kill-session"
 alias k="kubectl"
 alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
 alias proxy="/usr/local/bin/kube_proxy.sh"
+alias helmdiff="/usr/local/bin/helmdiff.sh"
 
 function roll_pods() {
   # Usage: $ roll_pods <pod> <namespace> [<parallel pods>]
