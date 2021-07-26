@@ -32,7 +32,6 @@ def file_exists(path):
     if os.path.exists(path):
         return True
     else:
-        print(f'Path: {path} not found. Skipping...')
         return False
 
 def cleanup_file(filename):
@@ -42,10 +41,10 @@ def cleanup_file(filename):
     path = os.path.expanduser(filename)
     os.remove(path)
 
-def get_backups(mount_path, machineName):
+def get_backups(backup_directory):
     """
     Returns a list of backup filepaths for the current user and machine name
     """
-    mount_path = os.path.expanduser(f'{mount_path}/Backups/{machineName}/')
+    mount_path = os.path.expanduser(backup_directory)
     paths = os.listdir(mount_path)
     return paths

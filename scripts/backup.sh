@@ -2,27 +2,36 @@
 
 NAS_SERVER=$(cat ~/.backuprc | grep "^  server: " | awk '{print $2}')
 NAS_USER=$(cat ~/.backuprc | grep "^  user: " | awk '{print $2}')
-MOUNT_LOCATION=$(cat ~/.backuprc | grep "^  mountLocation: " | awk '{print $2}' | /usr/local/bin/gsed "s@\~@${HOME}@g")
+MOUNT_PATH=$(cat ~/.backuprc | grep "^  mountLocation: " | awk '{print $2}')
+
+# Unmounts the NAS and removes the /tmp/backup directory
+function cleanup() {
+  # Unmount the NAS
+  echo "Unmounting ${MOUNT_PATH}..."
+  /sbin/umount ${MOUNT_PATH}
+
+  # Remove the /tmp/backup dir
+  rm -r ${MOUNT_PATH}
+}
 
 # Disconnect from the VPN if necessary
 # echo "Killing VPN Connection..."
 # sudo pkill -x "openvpn"
 
-# Mount the NAS
-NAS_MOUNTED=$(mount | grep /Users/`whoami`/NAS)
-if [[ -z ${NAS_MOUNTED} ]]; then
-  echo "Mounting ${NAS_SERVER} to ${MOUNT_LOCATION}"
-  /sbin/mount_smbfs //${NAS_SERVER}/${NAS_USER} ${MOUNT_LOCATION}
-  EXIT_CODE=$?
+# Make a temp directory to mount the NAS
+mkdir ${MOUNT_PATH}
 
-  # If there is an error mounting fail fast
-  if [[ ${EXIT_CODE} -ne 0 ]]; then
-    echo "[Error]: There was an error mounting ${NAS_SERVER} to ${MOUNT_LOCATION}"
-    echo "Exit Code: ${EXIT_CODE}"
-    exit 1
-  fi
-else
-  echo "NAS already mounted..."
+# Mount the NAS
+echo "Mounting ${NAS_SERVER} to ${MOUNT_PATH}"
+/sbin/mount_smbfs //${NAS_SERVER}/Backups ${MOUNT_PATH}
+EXIT_CODE=$?
+
+# If there is an error mounting fail fast
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+  echo "[Error]: There was an error mounting ${NAS_SERVER} to ${MOUNT_PATH}"
+  echo "Exit Code: ${EXIT_CODE}"
+  cleanup
+  exit 1
 fi
 
 # Perfrom Backup
@@ -34,10 +43,7 @@ cd ${HOME}/dev/dotfiles/backup
 
 # Make sure the machine does not sleep for the duration of the backup
 BACKUP_PID=$!
-echo "PID: ${BACKUP_PID}"
 caffeinate -w ${BACKUP_PID}
-echo "Finished Backup..."
 
-# Unmount the NAS
-echo "Unmounting ${MOUNT_LOCATION}..."
-/sbin/umount ${MOUNT_LOCATION}
+# Unmount the NAS and cleanup temp directory
+cleanup

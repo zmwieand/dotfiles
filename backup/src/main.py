@@ -20,15 +20,24 @@ def main():
 
     # TODO: should probably fail if these do not get parsed out correctly
 
-    # Verify all paths exist
+    # Set the backup filename by date
+    today = date.today()
+    backup_directory = f'{nas_mount}/{user}/{machineName}'
+    tar_filename = today.strftime('/tmp/%Y-%m-%d-backup.tar.gz')
+    gpg_filename = today.strftime(f'{backup_directory}/%Y-%m-%d-backup.gpg')
+
+    # If the backup file for today was already created, return
+    if file_exists(gpg_filename):
+        print('Backup already complete. Exiting...)')
+        return
+
+    # Verify all paths in backuprc exist
     paths = list(filter(lambda p: file_exists(p), paths))
 
-    today = date.today()
-    tar_filename = today.strftime('/tmp/%Y-%m-%d-backup.tar.gz')
-    gpg_filename = today.strftime(f'{nas_mount}/Backups/{machineName}/%Y-%m-%d-backup.gpg')
-
     # Create and encrypt tgz
+    print('Compressing files...')
     tar_file(tar_filename, paths)
+    print('Encrypting files...')
     encrypt_file(gpg_filename, tar_filename, recipients)
 
     # Format retainment dates to filenames
@@ -36,11 +45,11 @@ def main():
     retain = list(map(lambda d: d.strftime('%Y-%m-%d-backup.gpg'), retain))
 
     # Purge any backup files that are not in retainment dates
-    current_backups = get_backups(nas_mount, machineName)
+    current_backups = get_backups(backup_directory)
     for backup in current_backups:
         if backup not in retain:
             print(f'Removing backup: {backup}')
-            cleanup_file(f'{nas_mount}/Backups/{machineName}/{backup}')
+            cleanup_file(f'{backup_directory}/{backup}')
 
     # Cleanup newly created backup files on the local machine (/tmp)
     cleanup_file(tar_filename)
