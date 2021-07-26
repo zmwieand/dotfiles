@@ -28,7 +28,7 @@ def main():
 
     # If the backup file for today was already created, return
     if file_exists(gpg_filename):
-        print('Backup already complete. Exiting...)')
+        print('Backup already complete. Exiting...')
         return
 
     # Verify all paths in backuprc exist
