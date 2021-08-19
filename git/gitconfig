@@ -8,6 +8,7 @@
     rebase = false
 [alias]
     acvclone = "!f() { git clone git@github.com:acv-auctions/$1; }; f"
+    aliases = config --get-regexp ^alias
     co = checkout
     cm = commit -m
     create = checkout -b
