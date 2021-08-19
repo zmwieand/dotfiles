@@ -56,7 +56,7 @@ execute pathogen#infect()
 
 
 " ------------------------------------------------------------------------------
-" Plugins
+" Custom Key Bindings
 " ------------------------------------------------------------------------------
 " todo keybinding - adds "- [ ]" to newline
 nnoremap tt o- [ ]
@@ -64,3 +64,8 @@ nnoremap tt o- [ ]
 " quote keybindings - Surround Visual Mode text in quotes
 vnoremap ' <Esc>`>a'<Esc>`<i'<Esc>
 vnoremap " <Esc>`>a"<Esc>`<i"<Esc>
+
+" ------------------------------------------------------------------------------
+" Commands
+" ------------------------------------------------------------------------------
+:command TODO :vs ~/dev/journal/TODO.md
