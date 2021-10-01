@@ -1,6 +1,9 @@
 # Allows me to add the git branch to my promt
 setopt PROMPT_SUBST
 
+# zsh autocomplete
+autoload -Uz compinit && compinit
+
 # History settings
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
