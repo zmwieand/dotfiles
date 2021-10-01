@@ -61,6 +61,9 @@ execute pathogen#infect()
 " todo keybinding - adds "- [ ]" to newline
 nnoremap tt o- [ ]
 
+" Open NERDTree using ctrl-o
+map <C-o> :NERDTreeToggle<CR>
+
 " quote keybindings - Surround Visual Mode text in quotes
 vnoremap ' <Esc>`>a'<Esc>`<i'<Esc>
 vnoremap " <Esc>`>a"<Esc>`<i"<Esc>
