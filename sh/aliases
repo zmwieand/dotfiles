@@ -13,6 +13,7 @@ alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
 alias psme="ps aux | grep $(whoami)"
 alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
 alias tf="terraform"
+alias todo_tree="grep -Rn TODO: ."
 alias weather="curl wttr.in/14086"
 
 # Search the current directory recursively
