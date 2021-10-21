@@ -107,6 +107,10 @@ function roll_pods() {
   kubectl -n $2 get pods | awk '{print $1}' | grep ^$1 | xargs -P${PARALLEL} -n1 kubectl -n $2 delete pod
 }
 
+function restart_deployment() {
+  kubectl rollout restart deployment/$1 -n $2
+}
+
 function suspend_cron() {
   # Usage: suspend_cron <cronjob name> <namespace>
   kubectl patch -n $2 cronjob/$1 -p '{"spec": {"suspend": true}}'
