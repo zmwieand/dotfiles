@@ -9,6 +9,7 @@
 [alias]
     acvclone = "!f() { git clone git@github.com:acv-auctions/$1; }; f"
     aliases = !git config --get-regexp ^alias | sed 's@^alias.@@' | sed 's@ @ = @'
+    amend = commit --amend
     co = checkout
     cm = commit -m
     create = checkout -b
