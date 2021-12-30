@@ -22,7 +22,7 @@ def main():
 
     # Set the backup filename by date
     today = date.today()
-    backup_directory = f'{nas_mount}/{user}/{machineName}'
+    backup_directory = f'{nas_mount}/Backups/{machineName}'
     tar_filename = today.strftime('/tmp/%Y-%m-%d-backup.tar.gz')
     gpg_filename = today.strftime(f'{backup_directory}/%Y-%m-%d-backup.gpg')
 
