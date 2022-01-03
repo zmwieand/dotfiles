@@ -22,11 +22,11 @@ brew "wget"
 
 # Casks
 cask "brave-browser", args: { force: true }
-cask "google-backup-and-sync", args: { force: true }
+cask "google-drive", args: { force: true }
 cask "google-chrome", args: { force: true }
 cask "iterm2", args: { force: true }
 cask "keepassxc", args: { force: true }
 cask "slack", args: { force: true }
-cask "spectacle", args: { force: true }
+cask "rectangle", args: { force: true }
 cask "spotify", args: { force: true }
 cask "zoom", args: { force: true }
