@@ -25,3 +25,7 @@ cd ${HOME}/dev/dotfiles/backup
 # Make sure the machine does not sleep for the duration of the backup
 BACKUP_PID=$!
 caffeinate -w ${BACKUP_PID}
+
+DATE=$(date +"%m/%d/%Y")
+TIME=$(date +"%H:%M:%S")
+echo "Finished Backup for ${DATE} at ${TIME}..."
