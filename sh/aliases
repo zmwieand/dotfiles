@@ -5,6 +5,7 @@ alias aliases="vim ~/.sh/aliases"
 alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
+alias htop='htop --sort-key PERCENT_NORM_CPU'
 alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\.\d+\""
 alias ll="ls -al"
 alias ls='ls -GFh'
