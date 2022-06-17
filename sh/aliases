@@ -25,6 +25,15 @@ function csearch() {
     grep --color -ERn $@ .
 }
 
+# Copy file content by path
+function copyfile() {
+    if [[ $# != 1 ]]; then
+        echo "[ERROR] Usage: copyfile <filename>"
+    else
+        cat $1 | pbcopy
+    fi
+}
+
 
 # ------------------------------------------------------------------------------
 # Git Aliases
