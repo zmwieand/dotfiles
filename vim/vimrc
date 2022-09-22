@@ -74,5 +74,5 @@ vnoremap ` <Esc>`>a`<Esc>`<i`<Esc>
 " ------------------------------------------------------------------------------
 :command TODO :vs ~/dev/journal/TODO.md
 :command Q :qall!
-:command WQ :wqall
+:command W :wall
 :command! -nargs=1 CUR :cal cursor(<args>)
