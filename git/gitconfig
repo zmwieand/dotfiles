@@ -6,6 +6,8 @@
     excludesfile = ~/.gitignore_global
 [pull]
     rebase = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [alias]
     acvclone = "!f() { git clone git@github.com:acv-auctions/$1; }; f"
     aliases = !git config --get-regexp ^alias | sed 's@^alias.@@' | sed 's@ @ = @'

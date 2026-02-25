@@ -2,7 +2,7 @@
 
 function usage()
 {
-  echo "USAGE: ./update_kubeconfig.sh <aws cluster name>"
+  echo "USAGE: ./update_kubeconfig.sh <cluster name>"
   exit 1
 }
 
@@ -11,8 +11,4 @@ if [[ $# != 1 ]]; then
 fi
 
 CLUSTER_NAME=$1
-
-rm ~/.kube/config
-aws eks update-kubeconfig --name ${CLUSTER_NAME}
-
-chmod 600 ~/.kube/config
+kubectl config use-context ${CLUSTER_NAME}
