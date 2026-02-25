@@ -73,6 +73,11 @@ colorschemes:
 ln -s -f `pwd`/tmux.conf ~/.tmux.conf
 ```
 
+##### iTerm
+Profile preferences are stored in the `iterm/` directory. To set these preferences,
+launch **iTerm** -> **Preferences** -> **Preferences** ->
+**Load preferences from a custom folder or URL**
+
 ##### Backups
 Create a file `~/backuprc` in the following format
 ```yaml

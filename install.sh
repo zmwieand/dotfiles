@@ -43,7 +43,7 @@ echo "Installing custom scripts..."
 SCRIPTS=$(ls -1 ./scripts)
 for script in ${SCRIPTS}
 do
-  ln -s -f `pwd`/scripts/${script} /usr/local/bin/${script}
+  sudo ln -s -f `pwd`/scripts/${script} /usr/local/bin/${script}
 done
 
 echo "Installing journal..."

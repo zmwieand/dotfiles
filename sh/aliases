@@ -2,7 +2,9 @@
 # General Aliases and Functions
 # ------------------------------------------------------------------------------
 alias aliases="vim ~/.sh/aliases"
+alias bookmarks="cat ~/.bookmarks"
 alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
+alias code="/usr/local/bin/code.sh"
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias grep='grep --color'
 alias htop='htop --sort-key PERCENT_NORM_CPU'
@@ -10,7 +12,7 @@ alias ifme="curl ifconfig.me && echo \"\" && ifconfig | grep -E \"\d+\.\d+\.\d+\
 alias ll="ls -al"
 alias ls='ls -GFh'
 alias ll='ls -laGFh'
-alias nas_mount='mount_smbfs //192.168.1.1/Zach ~/NAS'
+alias nas_mount='/sbin/mount_smbfs //$(cat ~/.smb_credentials)@192.168.1.218/Share ~/NAS'
 alias psme="ps aux | grep $(whoami)"
 alias pwdcp="pwd | tr -d '\n' | pbcopy"
 alias sha1sum="shasum -a 1"
@@ -18,7 +20,9 @@ alias sha256sum="shasum -a 256"
 alias subl="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
 alias tf="terraform"
 alias todo_tree="grep -Rn TODO: ."
-alias weather="curl wttr.in/14086"
+alias vibe='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+alias vim="nvim"
+alias weather="curl wttr.in"
 
 # Search the current directory recursively
 function csearch() {
@@ -100,12 +104,32 @@ alias killw="tmux kill-window"
 alias killp="tmux kill-pane"
 alias kills="tmux kill-session"
 
+# Resize pane in horizontally (x direction) by an input percentage
+function rx() {
+  if [[ $# -lt 1 ]]; then
+    echo "[Usage]: rx <percentage>"
+    return
+  fi
+
+  tmux resize-pane -x "$1%"
+}
+
+# Resize pane vertically (y direction) by an input percentage
+function ry() {
+  if [[ $# -lt 1 ]]; then
+    echo "[Usage]: ry <percentage>"
+    return
+  fi
+
+  tmux resize-pane -y "$1%"
+}
+
 
 # ------------------------------------------------------------------------------
 # Kubernetes Aliases and Functions
 # ------------------------------------------------------------------------------
 alias k="kubectl"
-alias kubeconfig_update="/usr/local/bin/update_kubeconfig.sh"
+alias ktx_update="/usr/local/bin/update_kubeconfig.sh"
 alias proxy="/usr/local/bin/kube_proxy.sh"
 alias helmdiff="/usr/local/bin/helmdiff.sh"
 

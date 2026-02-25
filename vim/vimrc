@@ -26,6 +26,9 @@ autocmd FileType sh setlocal ts=2 sw=2 expandtab
 autocmd FileType typescript setlocal ts=2 sw=2 expandtab
 autocmd FileType tf setlocal ts=2 sw=2 expandtab
 
+" use tabs not spaces on golang files
+autocmd FileType go setlocal ts=4 sw=4 noexpandtab
+
 
 " ------------------------------------------------------------------------------
 " Syntax highlighting and colorscheme
@@ -37,8 +40,8 @@ colorscheme solarized
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
-" 80 Line Limit
-set colorcolumn=80
+" 100 Character Line Limit
+set colorcolumn=100
 highlight ColorColumn ctermbg=238
 
 " Highlight extra whitespace at end of line

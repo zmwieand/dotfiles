@@ -11,4 +11,4 @@ echo "Copied token to clipboard"
 echo
 
 echo Updated Link: http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:https/proxy/#!/login
-kubectl proxy
+# kubectl proxy
